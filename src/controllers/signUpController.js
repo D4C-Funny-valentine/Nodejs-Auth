@@ -2,6 +2,7 @@
 // Email RegEx - !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
 const User = require("../model/User");
 const { hashData } = require("../utils/hashData");
+const { emailVerifyAndSendOtp } = require("./emailVerificationController");
 
 const signUpHandler = async (req, res) => {
   const { name, email, password } = req.body;
@@ -42,6 +43,7 @@ const signUpHandler = async (req, res) => {
       email: trimmedEmail,
       password: hashPassword,
     });
+    await emailVerifyAndSendOtp(trimmedEmail);
     return res.status(200).json({
       success: true,
       message: `${trimmedName} is signed up successfully`,

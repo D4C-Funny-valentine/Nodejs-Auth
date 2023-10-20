@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const OtpSchema = new Schema({
   email: { type: String, required: true, unique: true },
-  opt: String,
+  otp: String,
   createdAt: Date,
   expiredAt: Date,
 });

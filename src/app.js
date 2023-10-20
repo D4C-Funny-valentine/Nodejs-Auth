@@ -16,6 +16,8 @@ app.use(express.json()); // middleware for parser json
 // route
 app.use("/api/v1/user", require("./routes/auth"));
 app.use("/api/v1/otp", require("./routes/otp"));
+app.use("/api/v1", require("./routes/email-verification"));
+app.use("/api/v1", require("./routes/forget-password"));
 
 // app.use("", (req,res) => {
 // })
